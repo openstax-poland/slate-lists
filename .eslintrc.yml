@@ -1,0 +1,11 @@
+env:
+  browser: true
+
+parser: '@typescript-eslint/parser'
+plugins:
+  - '@typescript-eslint'
+
+extends:
+  - openstax-poland/style
+  - plugin:@typescript-eslint/eslint-recommended
+  - plugin:@typescript-eslint/recommended

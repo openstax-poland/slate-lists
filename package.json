@@ -1,0 +1,26 @@
+{
+  "name": "slate-lists",
+  "version": "0.1.0",
+  "description": "List plugin for Slate",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.es.js",
+  "repository": "https://github.com/openstax-poland/slate-lists",
+  "license": "MIT",
+  "files": [
+    "dist"
+  ],
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^2.15.0",
+    "@typescript-eslint/parser": "^2.15.0",
+    "@wessberg/rollup-plugin-ts": "^1.2.9",
+    "eslint": "^6.8.0",
+    "eslint-config-openstax-poland": "https://github.com/openstax-poland/eslint-config-openstax-poland.git",
+    "rollup": "^1.29.0",
+    "typescript": "^3.7.4"
+  },
+  "scripts": {
+    "build": "rollup -c",
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx src/",
+    "prepare": "rollup -c"
+  }
+}
