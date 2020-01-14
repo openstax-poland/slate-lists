@@ -18,4 +18,7 @@ export default {
     plugins: [
         typescript(),
     ],
+    external: [
+        'slate',
+    ],
 }
