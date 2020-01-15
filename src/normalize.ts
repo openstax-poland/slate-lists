@@ -22,10 +22,10 @@ export default function normalizeNode(
             return
         }
 
-        // A list should only contain list_items. Wrap any other nodes in
-        // a list_item.
+        // A list should only contain lists and list_items. Wrap any other nodes
+        // in a list_item.
         for (const [child, childPath] of Node.children(editor, path)) {
-            if (!isListItem(child)) {
+            if (!isListItem(child) && !isList(child)) {
                 Transforms.wrapNodes(
                     editor,
                     { type: 'list_item', children: [] },
@@ -33,6 +33,14 @@ export default function normalizeNode(
                 )
                 return
             }
+        }
+
+        // To avoid arbitrary nesting, each nested list must be preceded by at
+        // least one item. Unwrap all nested lists which aren't.
+        const [parent] = Editor.parent(editor, path)
+        if (isList(parent) && Editor.previous(editor, { at: path }) == null) {
+            Transforms.unwrapNodes(editor, { at: path })
+            return
         }
 
         // There should be no adjacent lists. If there are any merge then into
