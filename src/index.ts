@@ -4,6 +4,8 @@
 
 import { Editor } from 'slate'
 
+import { List, ListItem, isList, isListItem } from './interfaces'
+
 /** A slate editor augmented with support for lists. */
 export interface ListEditor extends Editor {
 }
@@ -12,3 +14,10 @@ export interface ListEditor extends Editor {
 export function withLists<T extends Editor>(editor: T): T & ListEditor {
     return editor
 }
+
+const List = {
+    isList,
+    isListItem,
+}
+
+export { List, ListItem }
