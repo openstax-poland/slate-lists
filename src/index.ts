@@ -6,6 +6,7 @@ import { Editor } from 'slate'
 
 import normalizeNode from './normalize'
 import { List, ListItem, isList, isListItem } from './interfaces'
+import { increaseDepth, decreaseDepth } from './transforms'
 
 /** A slate editor augmented with support for lists. */
 export interface ListEditor extends Editor {
@@ -21,6 +22,8 @@ export function withLists<T extends Editor>(editor: T): T & ListEditor {
 }
 
 const List = {
+    decreaseDepth,
+    increaseDepth,
     isList,
     isListItem,
 }
