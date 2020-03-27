@@ -15,6 +15,13 @@ fixtures(__dirname, 'normalization', ({ input, output }) => {
     expect(editor.selection).to.deep.eq(output.selection)
 })
 
+fixtures(__dirname, 'transforms', ({ input, output, run }) => {
+    const editor = withLists(input)
+    run(editor)
+    expect(editor.children).to.deep.eq(output.children)
+    expect(editor.selection).to.deep.eq(output.selection)
+})
+
 global.h = createHyperscript({
     elements: {
         block: {},
