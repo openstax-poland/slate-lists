@@ -1,4 +1,4 @@
-import typescript from "@wessberg/rollup-plugin-ts"
+import typescript from 'rollup-plugin-typescript2'
 
 export default {
     input: 'src/index.ts',

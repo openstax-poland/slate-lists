@@ -4,6 +4,7 @@
   "description": "List plugin for Slate",
   "main": "dist/index.cjs.js",
   "module": "dist/index.es.js",
+  "types": "dist/index.d.ts",
   "repository": "https://github.com/openstax-poland/slate-lists",
   "license": "MIT",
   "files": [
@@ -16,12 +17,12 @@
     "@babel/register": "^7.8.3",
     "@typescript-eslint/eslint-plugin": "^2.15.0",
     "@typescript-eslint/parser": "^2.15.0",
-    "@wessberg/rollup-plugin-ts": "^1.2.9",
     "chai": "^4.2.0",
     "eslint": "^6.8.0",
     "eslint-config-openstax-poland": "https://github.com/openstax-poland/eslint-config-openstax-poland.git",
     "mocha": "^7.0.0",
     "rollup": "^1.29.0",
+    "rollup-plugin-typescript2": "^0.27.0",
     "slate": "^0.57.1",
     "slate-hyperscript": "^0.57.1",
     "typescript": "^3.7.4"
