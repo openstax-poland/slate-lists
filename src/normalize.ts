@@ -4,7 +4,7 @@
 
 import { Editor, Node, NodeEntry, Text, Transforms } from 'slate'
 
-import { isList, isListItem } from './interfaces'
+import { List, ListItem } from './interfaces'
 
 export default function normalizeNode(
     normalizeNode: (entry: NodeEntry) => void,
@@ -13,7 +13,7 @@ export default function normalizeNode(
 ) {
     const [node, path] = entry
 
-    if (isList(node)) {
+    if (List.isList(node)) {
         // Remove empty lists
         if (node.children.length === 1
         && Text.isText(node.children[0])
@@ -25,7 +25,7 @@ export default function normalizeNode(
         // A list should only contain lists and list_items. Wrap any other nodes
         // in a list_item.
         for (const [child, childPath] of Node.children(editor, path)) {
-            if (!isListItem(child) && !isList(child)) {
+            if (!ListItem.isListItem(child) && !List.isList(child)) {
                 Transforms.wrapNodes(
                     editor,
                     { type: 'list_item', children: [] },
@@ -38,7 +38,7 @@ export default function normalizeNode(
         // To avoid arbitrary nesting, each nested list must be preceded by at
         // least one item. Unwrap all nested lists which aren't.
         const [parent] = Editor.parent(editor, path)
-        if (isList(parent) && Editor.previous(editor, { at: path }) == null) {
+        if (List.isList(parent) && Editor.previous(editor, { at: path }) == null) {
             Transforms.unwrapNodes(editor, { at: path })
             return
         }
@@ -48,17 +48,17 @@ export default function normalizeNode(
         // TODO: allow for different kinds of lists (e.g. enumerated and
         // itemized) not to be joined.
         const [next, nextPath] = Editor.next(editor, { at: path }) || []
-        if (next != null && isList(next)) {
+        if (next != null && List.isList(next)) {
             Transforms.mergeNodes(editor, { at: nextPath })
             return
         }
     }
 
-    if (isListItem(node)) {
+    if (ListItem.isListItem(node)) {
         // List items should only ever exist as children of a list. Replace all
         // other list items with their contents.
         const [parent] = Editor.parent(editor, path)
-        if (!isList(parent)) {
+        if (!List.isList(parent)) {
             Transforms.unwrapNodes(editor, { at: path })
             return
         }

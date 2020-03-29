@@ -12,6 +12,15 @@ export interface List extends Element {
     type: 'list',
 }
 
+export const List = {
+    /**
+     * Check if a value implements the [[List]] interface.
+     */
+    isList(value: unknown): value is List {
+        return Element.isElement(value) && value.type === 'list'
+    },
+}
+
 /** Interface to which list items conform.
  *
  * You are free to add other properties to list items.
@@ -20,17 +29,11 @@ export interface ListItem extends Element {
     type: 'list_item',
 }
 
-/**
- * Check if a value implements the [[List]] interface.
- */
-export function isList(value: any): value is List {
-    return Element.isElement(value) && value.type === 'list'
+export const ListItem = {
+    /**
+     * Check if a value implements the [[ListItem]] interface.
+     */
+    isListItem(value: unknown): value is ListItem {
+        return Element.isElement(value) && value.type === 'list_item'
+    },
 }
-
-/**
- * Check if a value implements the [[ListItem]] interface.
- */
-export function isListItem(value: any): value is ListItem {
-    return Element.isElement(value) && value.type === 'list_item'
-}
-

@@ -4,7 +4,7 @@
 
 import { Editor, Element, Location, Path, Span, Node, Range, Text, Transforms } from 'slate'
 
-import { isList, isListItem } from './interfaces'
+import { List, ListItem } from './interfaces'
 
 /** Decrease depth of items in selection */
 export function decreaseDepth(
@@ -17,7 +17,7 @@ export function decreaseDepth(
 
     Transforms.liftNodes(editor, {
         at,
-        match: isListItem,
+        match: ListItem.isListItem,
         mode: 'lowest',
     })
 }
@@ -34,7 +34,7 @@ export function increaseDepth(
 
         const [[parent, parentPath]] = Editor.levels(editor, {
             at,
-            match: n => isComplexBlock(editor, n) && !isListItem(n),
+            match: n => isComplexBlock(editor, n) && !ListItem.isListItem(n),
             reverse: true,
         })
 
@@ -55,7 +55,7 @@ export function increaseDepth(
 
             const [prev, prevPath] = Editor.previous(editor, { at: start }) || []
 
-            if (isList(prev)) {
+            if (List.isList(prev)) {
                 Transforms.moveNodes(editor, {
                     at: range,
                     to: prevPath.concat(prev.children.length),
@@ -66,7 +66,7 @@ export function increaseDepth(
 
             const [next, nextPath] = Editor.next(editor, { at: end }) || []
 
-            if (isList(next)) {
+            if (List.isList(next)) {
                 Transforms.moveNodes(editor, {
                     at: range,
                     to: nextPath.concat(0),
@@ -104,7 +104,7 @@ function *spansToWrapInList(editor, parentPath: Path, range: Range): Iterable<Sp
     for (const [child, childPath] of Node.children(editor, parentPath)) {
         if (!Range.includes(range, childPath)) continue
 
-        if (isList(child)) {
+        if (List.isList(child)) {
             if (start != null) {
                 yield [start, end]
             }
