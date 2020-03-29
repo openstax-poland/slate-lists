@@ -51,7 +51,7 @@ export function increaseDepth(
             const end = endRef.unref()
             const range = Editor.range(editor, start, end)
             const [parent] = Editor.node(editor, Path.parent(start))
-            const match = n => parent.children.includes(n)
+            const match = (n: Node) => parent.children.includes(n)
 
             const [prev, prevPath] = Editor.previous(editor, { at: start }) || []
 
@@ -97,7 +97,7 @@ function isComplexBlock(editor: Editor, node: Node): boolean {
  * Yield a sequence of spans which need to be wrapped in lists to increase depth
  * of selection
  */
-function *spansToWrapInList(editor, parentPath: Path, range: Range): Iterable<Span> {
+function *spansToWrapInList(editor: Editor, parentPath: Path, range: Range): Iterable<Span> {
     let start = null
     let end = null
 
