@@ -14,10 +14,8 @@ export default function normalizeNode(
     const [node, path] = entry
 
     if (List.isList(node)) {
-        // Remove empty lists
-        if (node.children.length === 1
-        && Text.isText(node.children[0])
-        && node.children[0].text === '') {
+        // Remove empty lists.
+        if (Editor.isEmpty(editor, node)) {
             Transforms.removeNodes(editor, { at: path })
             return
         }
@@ -55,6 +53,12 @@ export default function normalizeNode(
     }
 
     if (ListItem.isListItem(node)) {
+        // Remove empty items.
+        if (Editor.isEmpty(editor, node)) {
+            Transforms.removeNodes(editor, { at: path })
+            return
+        }
+
         // List items should only ever exist as children of a list. Replace all
         // other list items with their contents.
         const [parent] = Editor.parent(editor, path)
