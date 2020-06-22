@@ -4,5 +4,6 @@
         "target": "esnext",
         "declaration": true,
         "noImplicitAny": true,
+        "moduleResolution": "node",
     },
 }
