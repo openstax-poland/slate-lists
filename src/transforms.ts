@@ -50,7 +50,7 @@ export function increaseDepth(
             const start = startRef.unref()
             const end = endRef.unref()
             const range = Editor.range(editor, start, end)
-            const [parent] = Editor.node(editor, Path.parent(start))
+            const [parent] = Editor.parent(editor, start)
             const match = (n: Node) => parent.children.includes(n)
 
             const [prev, prevPath] = Editor.previous(editor, { at: start }) || []
