@@ -1,8 +1,8 @@
 /** @jsx h **/
 
-import { List } from '../../..'
+import { Transforms } from '../../..'
 
-export const run = editor => List.decreaseDepth(editor)
+export const run = editor => Transforms.decreaseDepth(editor)
 
 export const input = <editor>
     <list>

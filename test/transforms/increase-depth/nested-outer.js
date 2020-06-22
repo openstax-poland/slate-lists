@@ -1,9 +1,9 @@
 /** @jsx h */
 
 import { Editor } from 'slate'
-import { List } from '../../..'
+import { Transforms } from '../../..'
 
-export const run = editor => List.increaseDepth(editor)
+export const run = editor => Transforms.increaseDepth(editor)
 
 export const input = <editor>
     <list>
