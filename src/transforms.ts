@@ -15,6 +15,8 @@ export function decreaseDepth(
 ): void {
     const { at = editor.selection } = options
 
+    if (at == null) return
+
     Transforms.liftNodes(editor, {
         at,
         match: ListItem.isListItem,
@@ -32,6 +34,8 @@ export function increaseDepth(
     Editor.withoutNormalizing(editor, () => {
         const { at = editor.selection } = options
 
+        if (at == null) return
+
         const [[parent, parentPath]] = Editor.levels(editor, {
             at,
             match: n => isComplexBlock(editor, n) && !ListItem.isListItem(n),
@@ -47,8 +51,8 @@ export function increaseDepth(
         )
 
         for (let [startRef, endRef] of spans) {
-            const start = startRef.unref()
-            const end = endRef.unref()
+            const start = startRef.unref()!
+            const end = endRef.unref()!
             const range = Editor.range(editor, start, end)
             const [parent] = Editor.parent(editor, start)
             const match = (n: Node) => parent.children.includes(n)
@@ -58,7 +62,7 @@ export function increaseDepth(
             if (List.isList(prev)) {
                 Transforms.moveNodes(editor, {
                     at: range,
-                    to: prevPath.concat(prev.children.length),
+                    to: prevPath!.concat(prev.children.length),
                     match,
                 })
                 continue
@@ -69,7 +73,7 @@ export function increaseDepth(
             if (List.isList(next)) {
                 Transforms.moveNodes(editor, {
                     at: range,
-                    to: nextPath.concat(0),
+                    to: nextPath!.concat(0),
                     match,
                 })
                 continue
@@ -106,7 +110,7 @@ function *spansToWrapInList(editor: Editor, parentPath: Path, range: Range): Ite
 
         if (List.isList(child)) {
             if (start != null) {
-                yield [start, end]
+                yield [start, end!]
             }
 
             yield* spansToWrapInList(editor, childPath, range)
@@ -123,6 +127,6 @@ function *spansToWrapInList(editor: Editor, parentPath: Path, range: Range): Ite
     }
 
     if (start != null) {
-        yield [start, end]
+        yield [start, end!]
     }
 }

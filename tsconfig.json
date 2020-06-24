@@ -3,7 +3,8 @@
         "outDir": "dist",
         "target": "esnext",
         "declaration": true,
-        "noImplicitAny": true,
         "moduleResolution": "node",
+        "strict": true,
+        "noErrorTruncation": true,
     },
 }
