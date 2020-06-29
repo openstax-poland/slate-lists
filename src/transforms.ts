@@ -2,7 +2,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for
 // full license text.
 
-import { Editor, Element, Location, Path, Span, Node, Range, Text, Transforms } from 'slate'
+import { Editor, Element, Location, Node, Path, Range, Span, Text, Transforms } from 'slate'
 
 import { List, ListItem } from './interfaces'
 
@@ -36,7 +36,7 @@ export function increaseDepth(
 
         if (at == null) return
 
-        const [[parent, parentPath]] = Editor.levels(editor, {
+        const [[, parentPath]] = Editor.levels(editor, {
             at,
             match: n => isComplexBlock(editor, n) && !ListItem.isListItem(n),
             reverse: true,
@@ -50,14 +50,14 @@ export function increaseDepth(
             ],
         )
 
-        for (let [startRef, endRef] of spans) {
+        for (const [startRef, endRef] of spans) {
             const start = startRef.unref()!
             const end = endRef.unref()!
             const range = Editor.range(editor, start, end)
             const [parent] = Editor.parent(editor, start)
             const match = (n: Node) => parent.children.includes(n)
 
-            const [prev, prevPath] = Editor.previous(editor, { at: start }) || []
+            const [prev, prevPath] = Editor.previous(editor, { at: start }) ?? []
 
             if (List.isList(prev)) {
                 Transforms.moveNodes(editor, {
@@ -68,7 +68,7 @@ export function increaseDepth(
                 continue
             }
 
-            const [next, nextPath] = Editor.next(editor, { at: end }) || []
+            const [next, nextPath] = Editor.next(editor, { at: end }) ?? []
 
             if (List.isList(next)) {
                 Transforms.moveNodes(editor, {

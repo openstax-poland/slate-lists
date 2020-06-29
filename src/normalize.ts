@@ -2,7 +2,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for
 // full license text.
 
-import { Editor, Node, NodeEntry, Text, Transforms } from 'slate'
+import { Editor, Node, NodeEntry, Transforms } from 'slate'
 
 import { List, ListItem } from './interfaces'
 
@@ -10,7 +10,7 @@ export default function normalizeNode(
     normalizeNode: (entry: NodeEntry) => void,
     editor: Editor,
     entry: NodeEntry,
-) {
+): void {
     const [node, path] = entry
 
     if (List.isList(node)) {
@@ -45,7 +45,7 @@ export default function normalizeNode(
         // one.
         // TODO: allow for different kinds of lists (e.g. enumerated and
         // itemized) not to be joined.
-        const [next, nextPath] = Editor.next(editor, { at: path }) || []
+        const [next, nextPath] = Editor.next(editor, { at: path }) ?? []
         if (next != null && List.isList(next)) {
             Transforms.mergeNodes(editor, { at: nextPath })
             return

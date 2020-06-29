@@ -4,12 +4,13 @@
 
 import { Element } from 'slate'
 
-/** Interface to which list elements conform.
+/**
+ * Interface to which list elements conform.
  *
  * You are free to add other properties to your lists.
  */
 export interface List extends Element {
-    type: 'list',
+    type: 'list'
 }
 
 export const List = {
@@ -21,12 +22,13 @@ export const List = {
     },
 }
 
-/** Interface to which list items conform.
+/**
+ * Interface to which list items conform.
  *
  * You are free to add other properties to list items.
  */
 export interface ListItem extends Element {
-    type: 'list_item',
+    type: 'list_item'
 }
 
 export const ListItem = {

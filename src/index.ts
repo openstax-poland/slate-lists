@@ -5,11 +5,12 @@
 import { Editor } from 'slate'
 
 import normalizeNode from './normalize'
-import { increaseDepth, decreaseDepth } from './transforms'
+import { decreaseDepth, increaseDepth } from './transforms'
 
 export { List, ListItem } from './interfaces'
 
 /** A slate editor augmented with support for lists. */
+/* eslint-disable-next-line @typescript-eslint/no-empty-interface */
 export interface ListEditor extends Editor {
 }
 
