@@ -1,5 +1,5 @@
 import chai from 'chai'
-import { withLists } from '..'
+import { withLists } from '../src'
 import { Editor } from 'slate'
 import { createHyperscript } from 'slate-hyperscript'
 
