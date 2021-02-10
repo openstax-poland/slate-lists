@@ -10,6 +10,9 @@
   "files": [
     "dist"
   ],
+  "resolutions": {
+    "slate": "openstax-poland/slate#slate-v0.58.4-1-gitpkg"
+  },
   "devDependencies": {
     "@babel/core": "^7.8.3",
     "@babel/preset-env": "^7.8.3",
