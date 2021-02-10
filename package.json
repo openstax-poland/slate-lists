@@ -11,7 +11,7 @@
     "dist"
   ],
   "resolutions": {
-    "slate": "openstax-poland/slate#slate-v0.58.4-1-gitpkg"
+    "slate": "openstax-poland/slate#slate-v0.59.0-gitpkg"
   },
   "devDependencies": {
     "@babel/core": "^7.8.3",
@@ -25,17 +25,17 @@
     "eslint-config-openstax-poland": "https://github.com/openstax-poland/eslint-config-openstax-poland.git",
     "eslint-import-resolver-node": "^0.3.4",
     "eslint-plugin-import": "^2.22.1",
-    "mocha": "^7.0.0",
+    "mocha": "^8.2.1",
     "nyc": "^15.1.0",
     "rollup": "^2.0.0",
     "rollup-plugin-typescript2": "^0.27.0",
-    "slate": ">= 0.57.0 < 0.59.0",
-    "slate-hyperscript": ">= 0.57.0 < 0.59.0",
-    "ts-node": "^8.10.2",
-    "typescript": "^3.7.4"
+    "slate": "0.57.0 - 0.59.x",
+    "slate-hyperscript": "0.57.0 - 0.59.x",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.1.4"
   },
   "peerDependencies": {
-    "slate": ">= 0.57.0 < 0.59.0"
+    "slate": "0.57.0 - 0.59.x"
   },
   "scripts": {
     "build": "rollup -c",
