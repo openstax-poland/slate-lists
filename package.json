@@ -21,6 +21,7 @@
     "eslint": "^7.0.0",
     "eslint-config-openstax-poland": "https://github.com/openstax-poland/eslint-config-openstax-poland.git",
     "mocha": "^7.0.0",
+    "nyc": "^15.1.0",
     "rollup": "^2.0.0",
     "rollup-plugin-typescript2": "^0.27.0",
     "slate": ">= 0.57.0 < 0.59.0",
@@ -33,6 +34,7 @@
   },
   "scripts": {
     "build": "rollup -c",
+    "coverage": "nyc --reporter text --reporter html mocha",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx src/",
     "prepack": "rollup -c",
     "prepare": "rollup -c",
