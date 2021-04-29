@@ -7,6 +7,7 @@ import { Editor } from 'slate'
 import normalizeNode from './normalize'
 import { decreaseDepth, increaseDepth } from './transforms'
 
+export { onKeyDown } from './handlers'
 export { List, ListItem } from './interfaces'
 
 /** A slate editor augmented with support for lists. */
