@@ -22,7 +22,7 @@
     "@typescript-eslint/parser": "^4.15.0",
     "chai": "^4.2.0",
     "eslint": "^7.0.0",
-    "eslint-config-openstax-poland": "https://github.com/openstax-poland/eslint-config-openstax-poland.git",
+    "eslint-config-openstax-poland": "openstax-poland/eslint-config-openstax-poland#gitpub/eslint-config-openstax-poland@0.1.0",
     "eslint-import-resolver-node": "^0.3.4",
     "eslint-plugin-import": "^2.22.1",
     "mocha": "^8.2.1",
