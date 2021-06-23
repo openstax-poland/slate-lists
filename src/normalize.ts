@@ -36,7 +36,8 @@ export default function normalizeNode(
         // To avoid arbitrary nesting, each nested list must be preceded by at
         // least one item. Unwrap all nested lists which aren't.
         const [parent] = Editor.parent(editor, path)
-        if (List.isList(parent) && Editor.previous(editor, { at: path }) == null) {
+        const [prev] = Editor.previous(editor, { at: path }) ?? []
+        if (List.isList(parent) && prev == null) {
             Transforms.unwrapNodes(editor, { at: path })
             return
         }
@@ -48,6 +49,10 @@ export default function normalizeNode(
         const [next, nextPath] = Editor.next(editor, { at: path }) ?? []
         if (next != null && List.isList(next)) {
             Transforms.mergeNodes(editor, { at: nextPath })
+            return
+        }
+        if (prev != null && List.isList(prev)) {
+            Transforms.mergeNodes(editor, { at: path })
             return
         }
     }

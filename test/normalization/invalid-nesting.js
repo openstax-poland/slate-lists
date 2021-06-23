@@ -7,6 +7,9 @@ export const input = <editor>
                 <block>There must be at least one item before each nested list</block>
             </li>
         </list>
+        <li>
+            <block>separator to prevent lists from collapsing</block>
+        </li>
         <list>
             <li>
                 <block>Like here:</block>
@@ -24,6 +27,9 @@ export const output = <editor>
     <list>
         <li>
             <block>There must be at least one item before each nested list</block>
+        </li>
+        <li>
+            <block>separator to prevent lists from collapsing</block>
         </li>
         <list>
             <li>
