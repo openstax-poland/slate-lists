@@ -1,6 +1,6 @@
 {
   "name": "slate-lists",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "List plugin for Slate",
   "main": "dist/index.cjs.js",
   "module": "dist/index.es.js",
@@ -10,9 +10,6 @@
   "files": [
     "dist"
   ],
-  "resolutions": {
-    "slate": "openstax-poland/slate#slate-v0.59.0-gitpkg"
-  },
   "devDependencies": {
     "@babel/core": "^7.15.5",
     "@babel/preset-env": "^7.15.6",
@@ -29,14 +26,14 @@
     "nyc": "^15.1.0",
     "rollup": "^2.58.0",
     "rollup-plugin-typescript2": "^0.30.0",
-    "slate": "0.57.0 - 0.59.x",
-    "slate-hyperscript": "0.57.0 - 0.59.x",
+    "slate": "0.57.0 - 0.66.x",
+    "slate-hyperscript": "0.57.0 - 0.66.x",
     "ts-node": "^10.2.1",
     "tslib": "^2.3.1",
     "typescript": "^4.4.3"
   },
   "peerDependencies": {
-    "slate": "0.57.0 - 0.59.x"
+    "slate": "0.57.0 - 0.66.x"
   },
   "scripts": {
     "build": "rollup -c",

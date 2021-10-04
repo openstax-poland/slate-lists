@@ -82,7 +82,7 @@ export function increaseDepth(
             Transforms.wrapNodes(editor, {
                 type: 'list',
                 children: [],
-            }, { at: range, match })
+            } as List, { at: range, match })
         }
     })
 }

@@ -26,7 +26,7 @@ export default function normalizeNode(
             if (!ListItem.isListItem(child) && !List.isList(child)) {
                 Transforms.wrapNodes(
                     editor,
-                    { type: 'list_item', children: [] },
+                    { type: 'list_item', children: [] } as ListItem,
                     { at: childPath },
                 )
                 return
