@@ -9,8 +9,9 @@ import { Element } from 'slate'
  *
  * You are free to add other properties to your lists.
  */
-export interface List extends Element {
+export interface List {
     type: 'list'
+    children: ListElement[]
 }
 
 export const List = {
@@ -18,7 +19,7 @@ export const List = {
      * Check if a value implements the [[List]] interface.
      */
     isList(value: unknown): value is List {
-        return Element.isElement(value) && (value as List).type === 'list'
+        return Element.isElement(value) && value.type === 'list'
     },
 }
 
@@ -27,15 +28,25 @@ export const List = {
  *
  * You are free to add other properties to list items.
  */
-export interface ListItem extends Element {
+export interface ListItem {
     type: 'list_item'
+    children: Element[]
 }
+
+export type ListElement = List | ListItem
 
 export const ListItem = {
     /**
      * Check if a value implements the [[ListItem]] interface.
      */
     isListItem(value: unknown): value is ListItem {
-        return Element.isElement(value) && (value as ListItem).type === 'list_item'
+        return Element.isElement(value) && value.type === 'list_item'
     },
+}
+
+/* eslint-disable @typescript-eslint/naming-convention */
+declare module 'slate' {
+    interface CustomTypes {
+        Element: List | ListItem
+    }
 }

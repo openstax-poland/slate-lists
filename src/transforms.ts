@@ -4,7 +4,7 @@
 
 import { Editor, Element, Location, Node, Path, Range, Span, Text, Transforms } from 'slate'
 
-import { List, ListItem } from './interfaces'
+import { List, ListElement, ListItem } from './interfaces'
 
 /** Decrease depth of items in selection */
 export function decreaseDepth(
@@ -55,7 +55,7 @@ export function increaseDepth(
             const end = endRef.unref()!
             const range = Editor.range(editor, start, end)
             const [parent] = Editor.parent(editor, start)
-            const match = (n: Node) => parent.children.includes(n)
+            const match = (n: Node) => parent.children.includes(n as ListElement)
 
             const [prev, prevPath] = Editor.previous(editor, { at: start }) ?? []
 
