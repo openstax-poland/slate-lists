@@ -10,7 +10,7 @@ import { Element } from 'slate'
  * You are free to add other properties to your lists.
  */
 export interface List {
-    type: 'list'
+    type: 'list' | 'section'
     children: ListElement[]
 }
 
@@ -19,7 +19,7 @@ export const List = {
      * Check if a value implements the [[List]] interface.
      */
     isList(value: unknown): value is List {
-        return Element.isElement(value) && value.type === 'list'
+        return Element.isElement(value) && (value.type === 'list' || value.type === 'section')
     },
 }
 
