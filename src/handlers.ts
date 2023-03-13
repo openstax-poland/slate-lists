@@ -38,7 +38,7 @@ function onEnter(editor: Editor, ev: KeyboardEvent): void {
     if (Editor.above(editor, { match: n => List.isList(n) })) {
         const node: NodeEntry<any> = Editor.node(editor, editor.selection)
         Transforms.splitNodes(editor, { match: ListItem.isListItem, always: true })
-        if (node[0].text === '' || node[0].text ==='/n' || node[0].text === '/n/n') {
+        if (node[0].text === '' || node[0].text ==='\n' || node[0].text === '\n\n') {
             decreaseDepth(editor)
             Transforms.removeNodes(editor,
                 { match: ListItem.isListItem, at: { path: node[1], offset: 0 } })
