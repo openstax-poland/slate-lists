@@ -4,9 +4,11 @@
 
 import { Editor, Node, NodeEntry, Transforms } from 'slate'
 
+import { ListEditorOptions } from '.'
 import { List, ListItem } from './interfaces'
 
 export default function normalizeNode(
+    options: ListEditorOptions,
     normalizeNode: (entry: NodeEntry) => void,
     editor: Editor,
     entry: NodeEntry,
@@ -23,7 +25,8 @@ export default function normalizeNode(
         // A list should only contain lists and list_items. Wrap any other nodes
         // in a list_item.
         for (const [child, childPath] of Node.children(editor, path)) {
-            if (!ListItem.isListItem(child) && !List.isList(child)) {
+            if (!ListItem.isListItem(child) && !List.isList(child)
+            && !options.isSpecialListItem(child)) {
                 Transforms.wrapNodes(
                     editor,
                     { type: 'list_item', children: [] } as ListItem,

@@ -1,6 +1,6 @@
 import chai from 'chai'
 import { withLists } from '../src'
-import { Editor } from 'slate'
+import { Editor, createEditor } from 'slate'
 import { createHyperscript } from 'slate-hyperscript'
 
 import fixtures from './util/fixtures'
@@ -17,8 +17,8 @@ fixtures(__dirname, 'handlers', ({ input, output, default: act }) => {
     expect(editor.selection).to.deep.eq(output.selection)
 })
 
-fixtures(__dirname, 'normalization', ({ input, output }) => {
-    const editor = withTest(input)
+fixtures(__dirname, 'normalization', ({ input, output, options }) => {
+    const editor = withTest(input, options)
     Editor.normalize(editor, { force: true })
     expect(editor.children).to.deep.eq(output.children)
     expect(editor.selection).to.deep.eq(output.selection)
@@ -39,11 +39,11 @@ global.h = createHyperscript({
     },
 })
 
-function withTest(input) {
+function withTest(input, options) {
     const editor = createEditor()
 
     editor.children = input.children
     editor.selection = input.selection
 
-    return withLists(editor)
+    return withLists(options, editor)
 }
