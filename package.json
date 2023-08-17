@@ -1,0 +1,17 @@
+{
+  "name": "slate-lists",
+  "version": "0.1.3-rc.1",
+  "description": "List plugin for Slate",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.es.js",
+  "types": "dist/index.d.ts",
+  "repository": "https://github.com/openstax-poland/slate-lists",
+  "license": "MIT",
+  "files": [
+    "dist"
+  ],
+  "peerDependencies": {
+    "slate": "^0.66"
+  },
+  "packageManager": "yarn@3.6.0"
+}
