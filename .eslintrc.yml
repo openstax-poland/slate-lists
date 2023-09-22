@@ -8,6 +8,10 @@ parserOptions:
 
 extends: openstax-poland/typescript/style
 
+settings:
+  # Consider PnP-installed modules as external
+  import/external-module-folders: ["node_modules", ".yarn"]
+
 rules:
   # Since TS has no type state and doesn't track inter-variable relations, it's
   # unable to determine that `path` is not null inside this if:

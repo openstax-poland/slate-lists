@@ -11,7 +11,6 @@ export { onKeyDown } from './handlers'
 export { List, ListItem } from './interfaces'
 
 /** A slate editor augmented with support for lists. */
-/* eslint-disable-next-line @typescript-eslint/no-empty-interface */
 export interface ListEditor extends Editor {
 }
 
@@ -36,8 +35,9 @@ export function withLists<T extends Editor>(editor: T): T & ListEditor
 export function withLists<T extends Editor>(
     options: Partial<ListEditorOptions>, editor: T): T & ListEditor
 
-/* eslint-disable-next-line @typescript-eslint/no-explicit-any */
-export function withLists<T extends Editor>(...args: any[]): T & ListEditor {
+export function withLists<T extends Editor>(
+    ...args: [T] | [Partial<ListEditorOptions>, T]
+): T & ListEditor {
     const editor: T = args.length === 2 ? args[1] : args[0]
     const userOptions: Partial<ListEditorOptions> = args.length === 2 ? args[0] : {}
     const options = { ...DEFAULT_OPTIONS, ...userOptions }

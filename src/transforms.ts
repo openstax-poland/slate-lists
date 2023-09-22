@@ -110,6 +110,8 @@ function *spansToWrapInList(editor: Editor, parentPath: Path, range: Range): Ite
 
         if (List.isList(child)) {
             if (start != null) {
+                // eslint-disable-next-line max-len
+                // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
                 yield [start, end!]
             }
 
@@ -127,6 +129,8 @@ function *spansToWrapInList(editor: Editor, parentPath: Path, range: Range): Ite
     }
 
     if (start != null) {
+        // eslint-disable-next-line max-len
+        // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
         yield [start, end!]
     }
 }

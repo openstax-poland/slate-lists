@@ -18,7 +18,7 @@ export const List = {
     /**
      * Check if a value implements the [[List]] interface.
      */
-    isList(value: unknown): value is List {
+    isList(this: void, value: unknown): value is List {
         return Element.isElement(value) && value.type === 'list'
     },
 }
@@ -39,7 +39,7 @@ export const ListItem = {
     /**
      * Check if a value implements the [[ListItem]] interface.
      */
-    isListItem(value: unknown): value is ListItem {
+    isListItem(this: void, value: unknown): value is ListItem {
         return Element.isElement(value) && value.type === 'list_item'
     },
 }

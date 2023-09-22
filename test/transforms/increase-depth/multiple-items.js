@@ -1,4 +1,4 @@
-/** @jsx h **/
+/** @jsx h */
 
 import { Transforms } from '../../..'
 
