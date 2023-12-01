@@ -4,7 +4,7 @@
 
 import { Editor, Element, Location, Node, Path, Range, Span, Text, Transforms } from 'slate'
 
-import { List, ListElement, ListItem } from './interfaces'
+import { List, ListItem } from './interfaces'
 
 /** Decrease depth of items in selection */
 export function decreaseDepth(
@@ -55,7 +55,7 @@ export function increaseDepth(
             const end = endRef.unref()!
             const range = Editor.range(editor, start, end)
             const [parent] = Editor.parent(editor, start)
-            const match = (n: Node) => parent.children.includes(n as ListElement)
+            const match = (n: Node) => (parent.children as Node[]).includes(n)
 
             const [prev, prevPath] = Editor.previous(editor, { at: start }) ?? []
 
@@ -110,8 +110,8 @@ function *spansToWrapInList(editor: Editor, parentPath: Path, range: Range): Ite
 
         if (List.isList(child)) {
             if (start != null) {
-                // eslint-disable-next-line max-len
-                // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
+                /* eslint-disable-next-line
+                    @typescript-eslint/no-unnecessary-type-assertion */
                 yield [start, end!]
             }
 
@@ -121,6 +121,8 @@ function *spansToWrapInList(editor: Editor, parentPath: Path, range: Range): Ite
             continue
         }
 
+        /* eslint-disable-next-line
+            @typescript-eslint/prefer-nullish-coalescing */
         if (start == null) {
             start = childPath
         }
@@ -129,8 +131,8 @@ function *spansToWrapInList(editor: Editor, parentPath: Path, range: Range): Ite
     }
 
     if (start != null) {
-        // eslint-disable-next-line max-len
-        // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
+        /* eslint-disable-next-line
+            @typescript-eslint/no-unnecessary-type-assertion */
         yield [start, end!]
     }
 }

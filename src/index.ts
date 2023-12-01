@@ -5,14 +5,13 @@
 import { Editor, Node } from 'slate'
 
 import normalizeNode from './normalize'
-import { decreaseDepth, increaseDepth } from './transforms'
 
+export * as Transforms from './transforms'
 export { onKeyDown } from './handlers'
 export { List, ListItem } from './interfaces'
 
 /** A slate editor augmented with support for lists. */
-export interface ListEditor extends Editor {
-}
+export type ListEditor = Editor
 
 /** Options for the lists plugin */
 export interface ListEditorOptions {
@@ -47,9 +46,4 @@ export function withLists<T extends Editor>(
     editor.normalizeNode = normalizeNode.bind(null, options, oldNormalizeNode, editor)
 
     return editor
-}
-
-export const Transforms = {
-    decreaseDepth,
-    increaseDepth,
 }

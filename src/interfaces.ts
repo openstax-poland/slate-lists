@@ -2,7 +2,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for
 // full license text.
 
-import { Element } from 'slate'
+import { Descendant, Element } from 'slate'
 
 /**
  * Interface to which list elements conform.
@@ -11,7 +11,7 @@ import { Element } from 'slate'
  */
 export interface List {
     type: 'list'
-    children: ListElement[]
+    children: Descendant[]
 }
 
 export const List = {
@@ -32,8 +32,6 @@ export interface ListItem {
     type: 'list_item'
     children: Element[]
 }
-
-export type ListElement = List | ListItem
 
 export const ListItem = {
     /**

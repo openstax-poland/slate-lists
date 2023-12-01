@@ -2,7 +2,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for
 // full license text.
 
-import { Editor, Node, Path, Point, Range, Text, Transforms } from 'slate'
+import { Descendant, Editor, Node, Path, Point, Range, Text, Transforms } from 'slate'
 
 import { List, ListItem } from './interfaces'
 import { decreaseDepth } from './transforms'
@@ -95,7 +95,7 @@ function isItemEmpty(item: ListItem): boolean {
     if (item.children.length === 0) return true
     if (item.children.length > 1) return false
 
-    let node = item.children[0]
+    let node: Descendant = item.children[0]
 
     if (!Text.isText(node)) {
         if (node.children.length === 0) return true
