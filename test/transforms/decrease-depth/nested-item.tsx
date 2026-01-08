@@ -1,20 +1,21 @@
 /** @jsx h */
 
-import { Transforms } from '../../..'
+import { Editor } from 'slate'
+import { Transforms } from '../../../src'
 
-export const run = editor => Transforms.decreaseDepth(editor)
+export default (editor: Editor) => Transforms.decreaseDepth(editor)
 
 export const input = <editor>
     <list>
         <li>
-            <block><anchor/>First item</block>
+            <block>First item</block>
         </li>
         <list>
             <li>
                 <block>First nested item</block>
             </li>
             <li>
-                <block><focus/>Second nested item</block>
+                <block><cursor/>Second nested item</block>
             </li>
             <li>
                 <block>Third nested item</block>
@@ -27,13 +28,17 @@ export const input = <editor>
 </editor>
 
 export const output = <editor>
-    <block><anchor/>First item</block>
     <list>
         <li>
-            <block>First nested item</block>
+            <block>First item</block>
         </li>
+        <list>
+            <li>
+                <block>First nested item</block>
+            </li>
+        </list>
         <li>
-            <block><focus/>Second nested item</block>
+            <block><cursor/>Second nested item</block>
         </li>
         <list>
             <li>

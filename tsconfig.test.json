@@ -1,0 +1,13 @@
+{
+    "extends": "./tsconfig.base.json",
+    "include": [
+        "test",
+    ],
+    "compilerOptions": {
+        // Modules
+        "types": ["node", "vite/client"],
+
+        "jsx": "react",
+        "noUncheckedSideEffectImports": true,
+    },
+}

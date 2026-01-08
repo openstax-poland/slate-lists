@@ -1,8 +1,9 @@
 /** @jsx h */
 
-import { Transforms } from '../../..'
+import { Editor } from 'slate'
+import { Transforms } from '../../../src'
 
-export const run = editor => Transforms.increaseDepth(editor)
+export default (editor: Editor) => Transforms.increaseDepth(editor)
 
 export const input = <editor>
     <list custom-attribute>

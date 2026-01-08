@@ -1,17 +1,16 @@
 /** @jsx h */
 
-import { Transforms } from '../../..'
+import { Editor } from 'slate'
+import { Transforms } from '../../../src'
 
-export const run = editor => Transforms.increaseDepth(editor)
+export default (editor: Editor) => Transforms.increaseDepth(editor)
 
 export const input = <editor>
-    <list custom-attribute="1">
+    <block><cursor/>before</block>
+    <list custom-attribute>
         <li>
             <block>one</block>
         </li>
-    </list>
-    <block><cursor/>between</block>
-    <list custom-attribute="2">
         <li>
             <block>two</block>
         </li>
@@ -19,12 +18,12 @@ export const input = <editor>
 </editor>
 
 export const output = <editor>
-    <list custom-attribute="1">
+    <list custom-attribute>
         <li>
-            <block>one</block>
+            <block><cursor/>before</block>
         </li>
         <li>
-            <block><cursor/>between</block>
+            <block>one</block>
         </li>
         <li>
             <block>two</block>

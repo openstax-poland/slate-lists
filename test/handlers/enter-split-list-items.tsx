@@ -1,6 +1,8 @@
 /** @jsx h */
 
-export default input => input.break().break()
+import { Simulator } from '../util/input'
+
+export default (input: Simulator) => input.break().break()
 
 export const input = <editor>
     <list>

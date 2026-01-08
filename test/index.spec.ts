@@ -1,17 +1,19 @@
-import chai from 'chai'
-import { withLists } from '../src'
+import { expect } from 'vitest'
+import { withLists, ListEditorOptions } from '../src'
 import { Editor, createEditor } from 'slate'
 import { createHyperscript } from 'slate-hyperscript'
 
 import fixtures from './util/fixtures'
-import withInput from './util/input'
+import simulateInput, { Simulator } from './util/input'
 
-global.expect = chai.expect
-global.should = chai.should()
+// Force vitest to watch fixtures
+import.meta.glob('./handlers/**/*.tsx')
+import.meta.glob('./normalization/**/*.tsx')
+import.meta.glob('./transforms/**/*.tsx')
 
-fixtures(__dirname, 'handlers', ({ input, output, default: act }) => {
+fixtures<(input: Simulator, editor: Editor) => void>(__dirname, 'handlers', ({ input, output, default: act }) => {
     const editor = withTest(input)
-    const simulator = withInput(editor)
+    const simulator = simulateInput(editor)
     act(simulator, editor)
     expect(editor.children).to.deep.eq(output.children)
     expect(editor.selection).to.deep.eq(output.selection)
@@ -24,14 +26,14 @@ fixtures(__dirname, 'normalization', ({ input, output, options }) => {
     expect(editor.selection).to.deep.eq(output.selection)
 })
 
-fixtures(__dirname, 'transforms', ({ input, output, run }) => {
+fixtures<(editor: Editor) => void>(__dirname, 'transforms', ({ input, output, default: act }) => {
     const editor = withTest(input)
-    run(editor)
+    act(editor)
     expect(editor.children).to.deep.eq(output.children)
     expect(editor.selection).to.deep.eq(output.selection)
 })
 
-global.h = createHyperscript({
+globalThis.h = createHyperscript({
     elements: {
         block: {},
         list: { type: 'list' },
@@ -39,11 +41,11 @@ global.h = createHyperscript({
     },
 })
 
-function withTest(input, options) {
+function withTest(input: Editor, options?: ListEditorOptions) {
     const editor = createEditor()
 
     editor.children = input.children
     editor.selection = input.selection
 
-    return withLists(options, editor)
+    return withLists(options ?? {}, editor)
 }

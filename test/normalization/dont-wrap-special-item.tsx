@@ -11,5 +11,5 @@ export const input = <editor>
 export const output = input
 
 export const options = {
-    isSpecialListItem: (node) => node.special,
+    isSpecialListItem: (node: any) => node.special,
 }

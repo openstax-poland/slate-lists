@@ -8,7 +8,7 @@ export default {
         sourcemap: true,
     },
     plugins: [
-        typescript(),
+        typescript({ tsconfig: './tsconfig.lib.json' }),
     ],
     external: [
         'slate',

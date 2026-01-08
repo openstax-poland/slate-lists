@@ -1,0 +1,23 @@
+{
+    "compilerOptions": {
+        // Type checking
+        "noImplicitOverride": true,
+        "strict": true,
+
+        // Modules
+        "module": "esnext",
+        "moduleResolution": "bundler",
+
+        // Emit
+        "declaration": true,
+        "noEmit": true,
+        "outDir": "dist",
+        "sourceMap": true,
+
+        // Language and Environment
+        "target": "es2024",
+
+        // Output formatting
+        "noErrorTruncation": true,
+    },
+}

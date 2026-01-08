@@ -1,10 +1,7 @@
 {
-    "compilerOptions": {
-        "outDir": "dist",
-        "target": "es2019",
-        "declaration": true,
-        "moduleResolution": "node",
-        "strict": true,
-        "noErrorTruncation": true,
-    },
+    "files": [],
+    "references": [
+        { "path": "./tsconfig.lib.json" },
+        { "path": "./tsconfig.test.json" },
+    ],
 }

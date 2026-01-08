@@ -1,8 +1,9 @@
 /** @jsx h */
 
-import { Transforms } from '../../..'
+import { Editor } from 'slate'
+import { Transforms } from '../../../src'
 
-export const run = editor => Transforms.decreaseDepth(editor)
+export default (editor: Editor) => Transforms.decreaseDepth(editor)
 
 export const input = <editor>
     <list>

@@ -1,6 +1,8 @@
 /** @jsx h */
 
-export default input => input.break({ shift: true }).break({ shift: true })
+import { Simulator } from '../util/input'
+
+export default (input: Simulator) => input.break({ shift: true }).break({ shift: true })
 
 export const input = <editor>
     <list>

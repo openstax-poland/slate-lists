@@ -13,34 +13,30 @@
     "dist"
   ],
   "devDependencies": {
-    "@babel/core": "^7.28.5",
-    "@babel/preset-env": "^7.28.5",
-    "@babel/preset-react": "^7.28.5",
-    "@babel/register": "^7.28.3",
     "@rollup/plugin-typescript": "^12.3.0",
-    "@types/node": "^25.0.2",
-    "chai": "^6.2.1",
+    "@types/node": "^25.0.10",
+    "@vitest/coverage-istanbul": "^4.0.18",
+    "@vitest/runner": "^4.0.18",
     "eslint": "^9.39.2",
     "eslint-config-openstax-poland": "openstax-poland/eslint-config-openstax-poland#gitpub/@openstax-poland/eslint-config@0.6.0",
-    "mocha": "^11.7.5",
-    "nyc": "^17.1.0",
-    "rollup": "^4.53.5",
+    "rollup": "^4.57.0",
     "slate": ">= 0.66 < 0.124",
     "slate-hyperscript": ">= 0.66 < 0.101",
-    "ts-node": "^10.9.2",
     "tslib": "^2.8.1",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "vite": "^7.3.1",
+    "vitest": "^4.0.16"
   },
   "peerDependencies": {
     "slate": ">= 0.66 < 0.124"
   },
   "scripts": {
     "build": "rollup -c",
-    "coverage": "nyc --reporter text --reporter html mocha",
+    "coverage": "vitest run --coverage",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx src/",
     "prepack": "rollup -c",
     "prepare": "rollup -c",
-    "test": "mocha"
+    "test": "vitest"
   },
   "packageManager": "yarn@4.12.0"
 }

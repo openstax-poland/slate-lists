@@ -1,7 +1,23 @@
+import { type Editor } from 'slate'
+import { describe, test } from 'vitest'
 import fs from 'fs'
 import { basename, extname, resolve } from 'path'
 
-export default function fixtures(...args) {
+import { ListEditorOptions } from '../../src'
+
+type TestFunction<D> = (module: {
+    default: D,
+    input: Editor,
+    output: Editor,
+    // checkSelection: boolean,
+    // withEditor?: (editor: Editor) => Editor,
+    options?: ListEditorOptions,
+}) => void
+
+export default function fixtures<D = void>(path: string, test: TestFunction<D>): void
+export default function fixtures<D = void>(path0: string, path1: string, test: TestFunction<D>): void
+
+export default function fixtures<D = void>(...args: any[]) {
     const fn = args.pop()
 
     const path = resolve(...args)
@@ -21,11 +37,11 @@ export default function fixtures(...args) {
             const name = basename(file, extname(file))
 
             // This needs to be a non-arrow function to use `this.skip()`.
-            it(name, function runTest() {
-                const module = require(p)
+            test(name, async ({ skip }) => {
+                const module = await import(p)
 
                 if (module.skip) {
-                    this.skip()
+                    skip(module.skip)
                     return
                 }
 
