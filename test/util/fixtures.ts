@@ -3,15 +3,13 @@ import { describe, test } from 'vitest'
 import fs from 'fs'
 import { basename, extname, resolve } from 'path'
 
-import { ListEditorOptions } from '../../src'
+import { ListEditor } from '../../src'
 
 type TestFunction<D> = (module: {
     default: D,
     input: Editor,
     output: Editor,
-    // checkSelection: boolean,
-    // withEditor?: (editor: Editor) => Editor,
-    options?: ListEditorOptions,
+    withEditor?: (editor: ListEditor) => ListEditor,
 }) => void
 
 export default function fixtures<D = void>(path: string, test: TestFunction<D>): void

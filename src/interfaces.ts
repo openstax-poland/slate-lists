@@ -4,15 +4,29 @@
 
 import { Descendant, Element } from 'slate'
 
+type ExtendableTypes =
+    | 'List'
+    | 'ListItem'
+
+export interface CustomTypes {
+    [key: string]: unknown
+}
+
+export type ExtendedType<K extends ExtendableTypes, B> = unknown extends CustomTypes[K]
+    ? B
+    : CustomTypes[K]
+
 /**
  * Interface to which list elements conform.
  *
  * You are free to add other properties to your lists.
  */
-export interface List {
+export interface BaseList {
     type: 'list'
     children: Descendant[]
 }
+
+export type List = ExtendedType<'List', BaseList>
 
 export const List = {
     /**
@@ -28,10 +42,12 @@ export const List = {
  *
  * You are free to add other properties to list items.
  */
-export interface ListItem {
+export interface BaseListItem {
     type: 'list_item'
     children: Element[]
 }
+
+export type ListItem = ExtendedType<'ListItem', BaseListItem>
 
 export const ListItem = {
     /**
@@ -40,11 +56,4 @@ export const ListItem = {
     isListItem(this: void, value: unknown): value is ListItem {
         return Element.isElement(value) && value.type === 'list_item'
     },
-}
-
-/* eslint-disable @typescript-eslint/naming-convention */
-declare module 'slate' {
-    interface CustomTypes {
-        Element: List | ListItem
-    }
 }
