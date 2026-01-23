@@ -8,7 +8,7 @@ import normalizeNode from './normalize'
 
 export * as Transforms from './transforms'
 export { onKeyDown } from './handlers'
-export { List, ListItem } from './interfaces'
+export { BaseList, BaseListItem, List, ListItem, CustomTypes, ExtendedType } from './interfaces'
 
 /** A slate editor augmented with support for lists. */
 export type ListEditor = Editor
