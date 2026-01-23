@@ -1,5 +1,5 @@
 import { expect } from 'vitest'
-import { withLists, ListEditorOptions } from '../src'
+import { withLists, ListEditor } from '../src'
 import { Editor, createEditor } from 'slate'
 import { createHyperscript } from 'slate-hyperscript'
 
@@ -19,8 +19,8 @@ fixtures<(input: Simulator, editor: Editor) => void>(__dirname, 'handlers', ({ i
     expect(editor.selection).to.deep.eq(output.selection)
 })
 
-fixtures(__dirname, 'normalization', ({ input, output, options }) => {
-    const editor = withTest(input, options)
+fixtures(__dirname, 'normalization', ({ input, output, withEditor }) => {
+    const editor = withTest(input, withEditor)
     Editor.normalize(editor, { force: true })
     expect(editor.children).to.deep.eq(output.children)
     expect(editor.selection).to.deep.eq(output.selection)
@@ -41,11 +41,15 @@ globalThis.h = createHyperscript({
     },
 })
 
-function withTest(input: Editor, options?: ListEditorOptions) {
-    const editor = createEditor()
+function withTest(input: Editor, withEditor?: (editor: ListEditor) => ListEditor) {
+    let editor = withLists(createEditor())
+
+    if (withEditor != null) {
+        editor = withEditor(editor)
+    }
 
     editor.children = input.children
     editor.selection = input.selection
 
-    return withLists(options ?? {}, editor)
+    return editor
 }

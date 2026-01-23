@@ -1,5 +1,7 @@
 /** @jsx h */
 
+import { ListEditor } from '../../src'
+
 export const input = <editor>
     <list>
         <block special={true}>
@@ -10,6 +12,7 @@ export const input = <editor>
 
 export const output = input
 
-export const options = {
-    isSpecialListItem: (node: any) => node.special,
+export const withEditor = (editor: ListEditor) => {
+    editor.isSpecialListItem = (node: any) => node.special
+    return editor
 }
