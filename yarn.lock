@@ -867,7 +867,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^25.0.3":
+"@types/node@npm:^25.0.10":
   version: 25.0.10
   resolution: "@types/node@npm:25.0.10"
   dependencies:
@@ -1146,7 +1146,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vitest/coverage-istanbul@npm:^4.0.16":
+"@vitest/coverage-istanbul@npm:^4.0.18":
   version: 4.0.18
   resolution: "@vitest/coverage-istanbul@npm:4.0.18"
   dependencies:
@@ -3026,7 +3026,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"rollup@npm:^4.43.0, rollup@npm:^4.55.1":
+"rollup@npm:^4.43.0, rollup@npm:^4.57.0":
   version: 4.57.0
   resolution: "rollup@npm:4.57.0"
   dependencies:
@@ -3208,18 +3208,18 @@ __metadata:
   resolution: "slate-lists@workspace:."
   dependencies:
     "@rollup/plugin-typescript": "npm:^12.3.0"
-    "@types/node": "npm:^25.0.3"
-    "@vitest/coverage-istanbul": "npm:^4.0.16"
+    "@types/node": "npm:^25.0.10"
+    "@vitest/coverage-istanbul": "npm:^4.0.18"
     "@vitest/runner": "npm:^4.0.18"
     eslint: "npm:^9.39.2"
     eslint-config-openstax-poland: "openstax-poland/eslint-config-openstax-poland#gitpub/@openstax-poland/eslint-config@0.6.0"
-    rollup: "npm:^4.55.1"
+    rollup: "npm:^4.57.0"
     slate: "npm:>= 0.66 < 0.124"
     slate-hyperscript: "npm:>= 0.66 < 0.101"
     tslib: "npm:^2.8.1"
     typescript: "npm:^5.9.3"
     vite: "npm:^7.3.1"
-    vitest: "npm:^4.0.16"
+    vitest: "npm:^4.0.18"
   peerDependencies:
     slate: ">= 0.66 < 0.124"
   languageName: unknown
@@ -3662,7 +3662,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vitest@npm:^4.0.16":
+"vitest@npm:^4.0.18":
   version: 4.0.18
   resolution: "vitest@npm:4.0.18"
   dependencies:
